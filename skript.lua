@@ -267,7 +267,7 @@ task.spawn(function()
     while true do -- Цикл, который работает бесконечно
         local success, currentMsg = pcall(function()
             -- Скрипт скачивает текст из твоего файла на GitHub
-            return game:HttpGet("https://raw.githubusercontent.com/ТВОЙ_НИК/ТВОЙ_РЕПО/main/news.txt")
+            return game:HttpGet("https://raw.githubusercontent.com/TheZeg/Monster-Runners-Script-Roblox-/refs/heads/main/news.txt")
         end)
 
         -- Если скачивание прошло успешно и текст новый:
@@ -276,7 +276,7 @@ task.spawn(function()
             
             -- Показываем уведомление игроку
             Rayfield:Notify({
-                Title = "НОВОСТИ THEZEG HUB",
+                Title = "TheZeg say:",
                 Content = currentMsg,
                 Duration = 10 -- Сколько секунд висит текст
             })
