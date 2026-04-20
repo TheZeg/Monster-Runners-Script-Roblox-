@@ -261,6 +261,31 @@ SettingsTab:CreateParagraph({
     Content = "Created by: TheZeg\nVersion: 1.2 [Beta]\nTgk: @TzSkripts"
 })
 
+local lastMsg = "" -- Тут скрипт запоминает старое сообщение
+
+task.spawn(function()
+    while true do -- Цикл, который работает бесконечно
+        local success, currentMsg = pcall(function()
+            -- Скрипт скачивает текст из твоего файла на GitHub
+            return game:HttpGet("https://raw.githubusercontent.com/ТВОЙ_НИК/ТВОЙ_РЕПО/main/news.txt")
+        end)
+
+        -- Если скачивание прошло успешно и текст новый:
+        if success and currentMsg ~= lastMsg then
+            lastMsg = currentMsg -- Запоминаем новое сообщение
+            
+            -- Показываем уведомление игроку
+            Rayfield:Notify({
+                Title = "НОВОСТИ THEZEG HUB",
+                Content = currentMsg,
+                Duration = 10 -- Сколько секунд висит текст
+            })
+        end
+        
+        task.wait(30) -- Ждем 30 секунд перед следующей проверкой (чтобы не лагало)
+    end
+end)
+
 Rayfield:Notify({
    Title = "Yay",
    Content = "Script loaded successfully!",
