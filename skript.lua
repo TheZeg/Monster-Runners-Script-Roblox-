@@ -120,18 +120,6 @@ MainTab:CreateToggle({
    end,
 })
 
-MainTab:CreateSlider({
-   Name = "Jump Power",
-   Range = {16, 200},
-   Increment = 1,
-   Suffix = "Power",
-   CurrentValue = 16,
-   Flag = "JumpPowerSlider", 
-   Callback = function(Value)
-       game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-   end,
-})
-
 MainTab:CreateSection("[[[NEW]]]")
 
 MainTab:CreateButton({
